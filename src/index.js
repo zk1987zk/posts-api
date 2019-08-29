@@ -77,10 +77,11 @@ app.listen(3000, () => {
 */
 
 //进行逻辑拆分后的代码
-require('dotenv').config()
+require('dotenv').config();
+const cors = require('cors');
 const routes = require('./routes');
 app.use('/v1', routes); //v1代表说这个是version 1，这就是入口文件
-
+app.use(cors());
 const PORT = process.env.PORT || 3000; //这个端口号是动态的，不一定是3000， 发布者发布的时候可能是环境变量的port属性，那我就用这个属性，不要hardcode 到 3000，除非发布者没给端口。
 
 app.listen(PORT, () => {
